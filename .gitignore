@@ -1,0 +1,42 @@
+# Gradle
+.gradle/
+**/build/
+build/
+app/build/
+
+# Android SDK / local config
+local.properties
+*.iml
+*.hprof
+*.log
+*.jks
+*.keystore
+*.apk
+*.ap_
+*.aab
+*.dex
+*.class
+
+# Android Studio / IntelliJ
+.idea/
+.kotlin/
+.artifacts/
+*.iws
+*.ipr
+*.swp
+*.swo
+
+# Native builds
+.externalNativeBuild/
+.cxx/
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Keep Gradle wrapper files tracked
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
