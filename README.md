@@ -1,30 +1,60 @@
 # Wind Wear OS
 
-A first Wear OS weather app built to show the live wind conditions for the user’s current location. It displays sustained wind, gusts, and wind direction in a compact, watch-friendly interface and includes complications for quick glance information.
+<p align="center">
+  <img src="https://img.shields.io/badge/Kotlin-1.9.24-7F52FF?logo=kotlin&logoColor=white" alt="Kotlin" />
+  <img src="https://img.shields.io/badge/Android-35-3DDC84?logo=android&logoColor=white" alt="Android 35" />
+  <img src="https://img.shields.io/badge/Wear%20OS-Compose-5E5CE6?logo=android&logoColor=white" alt="Wear OS Compose" />
+  <img src="https://img.shields.io/badge/Status-Prototype-orange" alt="Prototype status" />
+</p>
 
-## Overview
+A compact Wear OS weather app built for quick glanceability. It helps the user check current wind speed, gusts, and direction from their wrist without opening a phone app.
 
-This project is a practical first version of a Wear OS app focused on a useful, glanceable experience:
+## Product Intro
 
-- current wind speed
-- current gust speed
-- wind direction
-- location-aware weather lookup
-- cached fallback behavior when the device is offline or the location is stale
-- watch complications for quick status checks
+Wind Wear OS is a first-pass wearable experience designed around the idea that a watch should surface only the most important information at a glance. The app focuses on a single question: what is the current wind doing right now?
+
+It combines:
+
+- live weather data
+- location awareness
+- local cache fallback
+- a clean watch-first UI
+- complication support for fast status checks
+
+## How It Works
+
+```mermaid
+flowchart LR
+    A[Wear OS UI] --> B[ViewModel]
+    B --> C[Location Repository]
+    B --> D[Weather Repository]
+    C --> E[Last Known Location]
+    D --> F[Open-Meteo API]
+    D --> G[SharedPreferences Cache]
+    F --> H[Weather Snapshot]
+    E --> H
+    H --> A
+    A --> I[Complications]
+```
 
 ## Features
 
-- Live weather data from Open-Meteo
-- Location-based fetch using Android location APIs
-- Permission-aware behavior for coarse/fine location access
-- Cached weather and cached last-known location fallback
-- Compose-based Wear OS UI
-- Complications for:
-  - sustained wind
-  - gusts
-  - summary view
-- Lightweight persistent cache using SharedPreferences
+- Live wind speed and gust readings from Open-Meteo
+- Current-direction readout with a watch-friendly summary
+- Location-aware fetch flow using Android location APIs
+- Permission-aware behavior for location access
+- Cached weather and last-known location fallback
+- Jetpack Compose watch UI
+- Additional complications for sustained wind, gusts, and summary status
+
+## Screenshots
+
+> Add screenshots here as the app is refined and tested on a Wear OS emulator or watch.
+
+```text
+[App screenshot placeholder]
+[Complication screenshot placeholder]
+```
 
 ## Tech Stack
 
@@ -37,7 +67,7 @@ This project is a practical first version of a Wear OS app focused on a useful, 
 - Kotlin Coroutines
 - SharedPreferences
 
-## Requirements
+## Prerequisites
 
 - Android Studio
 - JDK 17
@@ -50,16 +80,16 @@ This project is a practical first version of a Wear OS app focused on a useful, 
 2. Install JDK 17.
 3. Open the project folder in Android Studio.
 4. Let Gradle sync finish.
-5. Open SDK Manager and install the required Android packages:
+5. Open SDK Manager and install the required packages:
    - Android 35 platform
    - Android Emulator
    - Wear OS system image
 6. Create or select a Wear OS AVD.
 7. Run the app from Android Studio.
 
-## Local configuration
+## Local Configuration
 
-Android Studio usually manages the SDK automatically, but if needed, make sure your local SDK path is defined in `local.properties`:
+Android Studio usually manages the SDK automatically. If needed, set your local SDK path in `local.properties`:
 
 ```properties
 sdk.dir=C:\Users\<your-user>\AppData\Local\Android\Sdk
@@ -67,11 +97,11 @@ sdk.dir=C:\Users\<your-user>\AppData\Local\Android\Sdk
 
 ## Permissions
 
-The app requests location permission so it can fetch weather based on the current device position.
+The app requests location permission so it can determine the user’s current position and fetch local weather data.
 
 ## API
 
-Weather data is provided by the Open-Meteo forecast API.
+Weather data is fetched from the Open-Meteo forecast API.
 
 ## Project Structure
 
@@ -90,12 +120,13 @@ Wear-OS/
 ├── gradlew
 ├── gradlew.bat
 ├── README.md
-└── .gitignore
+├── .gitignore
+└── .idea/
 ```
 
 ## Notes
 
-This project is meant as a first wearable app prototype and learning project. It demonstrates how to combine watch UI, location, API data, caching, and complications into a compact Wear OS experience.
+This project is a starting point for building a practical wearable weather product. It focuses on watch-friendly data, simple interactions, and a compact app experience designed for a small screen.
 
 ## License
 
