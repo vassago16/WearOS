@@ -1,52 +1,65 @@
 # Wind Wear OS
 
-A first-generation Wear OS app that shows live wind conditions for the user’s current location, including sustained wind, gusts, and wind direction.
+A first Wear OS weather app built to show the live wind conditions for the user’s current location. It displays sustained wind, gusts, and wind direction in a compact, watch-friendly interface and includes complications for quick glance information.
+
+## Overview
+
+This project is a practical first version of a Wear OS app focused on a useful, glanceable experience:
+
+- current wind speed
+- current gust speed
+- wind direction
+- location-aware weather lookup
+- cached fallback behavior when the device is offline or the location is stale
+- watch complications for quick status checks
 
 ## Features
 
-- Fetches current wind data from Open-Meteo
-- Uses current device location when permission is granted
-- Falls back to cached location and cached weather if fresh enough
-- Shows wind speed, gust, and direction on a Wear OS watch UI
-- Includes Wear OS complication providers for:
+- Live weather data from Open-Meteo
+- Location-based fetch using Android location APIs
+- Permission-aware behavior for coarse/fine location access
+- Cached weather and cached last-known location fallback
+- Compose-based Wear OS UI
+- Complications for:
   - sustained wind
-  - gust
-  - wind summary
-- Supports a lightweight cache to reduce repeated API calls
+  - gusts
+  - summary view
+- Lightweight persistent cache using SharedPreferences
 
-## Tech stack
+## Tech Stack
 
 - Kotlin
-- Jetpack Compose for Wear OS UI
-- Android SDK / Gradle
+- Jetpack Compose for Wear OS
+- Android Gradle Plugin
 - Google Play Services Location
-- Retrofit + Moshi
+- Retrofit
+- Moshi
 - Kotlin Coroutines
-- SharedPreferences for local cache
+- SharedPreferences
 
-## Prerequisites
+## Requirements
 
 - Android Studio
 - JDK 17
-- Android SDK with:
-  - Android 35 platform
-  - Android Emulator
-  - Wear OS system image
-- A Wear OS emulator or physical watch
+- Android SDK 35
+- Wear OS emulator image or physical Wear OS device
 
 ## Setup
 
 1. Install Android Studio.
 2. Install JDK 17.
 3. Open the project folder in Android Studio.
-4. Let Gradle sync complete.
-5. In Android Studio, open SDK Manager and make sure the necessary Android SDK packages are installed.
-6. Create or select a Wear OS emulator.
+4. Let Gradle sync finish.
+5. Open SDK Manager and install the required Android packages:
+   - Android 35 platform
+   - Android Emulator
+   - Wear OS system image
+6. Create or select a Wear OS AVD.
 7. Run the app from Android Studio.
 
 ## Local configuration
 
-The project expects Android SDK configuration in the local environment, usually via Android Studio. If needed, make sure `local.properties` points to your SDK path, for example:
+Android Studio usually manages the SDK automatically, but if needed, make sure your local SDK path is defined in `local.properties`:
 
 ```properties
 sdk.dir=C:\Users\<your-user>\AppData\Local\Android\Sdk
@@ -54,32 +67,36 @@ sdk.dir=C:\Users\<your-user>\AppData\Local\Android\Sdk
 
 ## Permissions
 
-The app requests location access so it can determine the user’s current position and fetch local weather data.
+The app requests location permission so it can fetch weather based on the current device position.
 
-## API usage
+## API
 
-Weather data is pulled from the Open-Meteo forecast API.
+Weather data is provided by the Open-Meteo forecast API.
 
-## Project structure
+## Project Structure
 
 ```text
-app/
-  src/main/java/com/example/wind/
-    complication/
-    data/
-    ui/
-    util/
-  src/main/res/
-build.gradle.kts
-settings.gradle.kts
-gradle.properties
-README.md
+Wear-OS/
+├── app/
+│   ├── src/main/java/com/example/wind/
+│   │   ├── complication/
+│   │   ├── data/
+│   │   ├── ui/
+│   │   └── util/
+│   └── src/main/res/
+├── build.gradle.kts
+├── settings.gradle.kts
+├── gradle.properties
+├── gradlew
+├── gradlew.bat
+├── README.md
+└── .gitignore
 ```
 
 ## Notes
 
-This is a simple first Wear OS app intended as a learning and prototype project. It is designed to be a practical starting point for building a watch-first weather experience.
+This project is meant as a first wearable app prototype and learning project. It demonstrates how to combine watch UI, location, API data, caching, and complications into a compact Wear OS experience.
 
 ## License
 
-This project is provided as-is for learning and personal experimentation.
+This project is provided for learning and experimentation. Use and adapt it as needed for personal or educational projects.
