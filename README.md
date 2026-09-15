@@ -9,13 +9,27 @@
 
 ## TL;DR
 
-A Wear OS weather app for checking current wind conditions at a glance, built around simple watch-first interactions, live location data, and reusable complications.
+A Wear OS weather app for checking wind conditions at a glance — built for fast answers, live location data, and simple watch-first interactions.
+
+## Value Proposition
+
+Wind Wear OS is designed for a single purpose: give the user the most important wind information in less than a second. Instead of forcing a full phone-like dashboard onto a tiny watch screen, it prioritizes the few data points that matter most: sustained wind, gusts, and direction.
+
+It turns a noisy weather feed into a wearable product experience that feels natural on a watch.
 
 ## Why This App Exists
 
 People check the weather in short bursts, and a watch is best at answering a few quick questions instead of showing a full dashboard. This app exists to make wind conditions immediately useful on a wearable screen: what is the sustained wind speed, how strong are the gusts, and which direction is it coming from?
 
-The goal is to turn a noisy weather feed into a compact, glanceable wearable experience that feels natural on a watch face or watch app.
+The goal is to turn a noisy weather feed into a compact, glanceable wearable experience that feels natural on a watch face or a watch app.
+
+## Built For
+
+- quick weather checks from the wrist
+- outdoor users who care about wind conditions
+- watch-first utility apps
+- compact, glanceable mobile experiences
+- wearable prototypes and product experiments
 
 ## How It Works
 
@@ -134,6 +148,15 @@ Wear-OS/
 ├── .gitignore
 └── .idea/
 ```
+
+## Roadmap / Next Steps
+
+- improve UI polish and spacing for small watch screens
+- add better stale-data handling and offline states
+- support additional weather metrics beyond wind
+- refine complication design and placement
+- test on a real Wear OS device and tune usability
+- explore a wider weather dashboard experience for wearables
 
 ## Notes
 
