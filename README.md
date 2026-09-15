@@ -7,19 +7,15 @@
   <img src="https://img.shields.io/badge/Status-Prototype-orange" alt="Prototype status" />
 </p>
 
-A compact Wear OS weather app built for quick glanceability. It helps the user check current wind speed, gusts, and direction from their wrist without opening a phone app.
+## TL;DR
 
-## Product Intro
+A Wear OS weather app for checking current wind conditions at a glance, built around simple watch-first interactions, live location data, and reusable complications.
 
-Wind Wear OS is a first-pass wearable experience designed around the idea that a watch should surface only the most important information at a glance. The app focuses on a single question: what is the current wind doing right now?
+## Why This App Exists
 
-It combines:
+People check the weather in short bursts, and a watch is best at answering a few quick questions instead of showing a full dashboard. This app exists to make wind conditions immediately useful on a wearable screen: what is the sustained wind speed, how strong are the gusts, and which direction is it coming from?
 
-- live weather data
-- location awareness
-- local cache fallback
-- a clean watch-first UI
-- complication support for fast status checks
+The goal is to turn a noisy weather feed into a compact, glanceable wearable experience that feels natural on a watch face or watch app.
 
 ## How It Works
 
@@ -37,6 +33,30 @@ flowchart LR
     A --> I[Complications]
 ```
 
+## Screenshots
+
+These placeholders can be replaced with real screenshots from the emulator or a physical watch once the app is run on device.
+
+<p align="center">
+  <img src="https://via.placeholder.com/320x320?text=Main+Wear+UI" alt="Main Wear OS screen" width="320" />
+  <img src="https://via.placeholder.com/320x320?text=Complication+Preview" alt="Complication preview" width="320" />
+</p>
+
+## Features By Screen
+
+### Watch screen
+- current sustained wind speed
+- current gust speed
+- wind direction label
+- refresh action for manual update
+- cached fallback state when data is stale
+
+### Complications
+- sustained wind status
+- gust summary
+- combined weather summary
+- quick glance view without opening the app
+
 ## Features
 
 - Live wind speed and gust readings from Open-Meteo
@@ -46,15 +66,6 @@ flowchart LR
 - Cached weather and last-known location fallback
 - Jetpack Compose watch UI
 - Additional complications for sustained wind, gusts, and summary status
-
-## Screenshots
-
-> Add screenshots here as the app is refined and tested on a Wear OS emulator or watch.
-
-```text
-[App screenshot placeholder]
-[Complication screenshot placeholder]
-```
 
 ## Tech Stack
 
