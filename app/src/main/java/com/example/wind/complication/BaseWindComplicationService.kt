@@ -9,10 +9,12 @@ import androidx.wear.watchface.complications.data.PlainComplicationText
 import androidx.wear.watchface.complications.data.ShortTextComplicationData
 import androidx.wear.watchface.complications.datasource.ComplicationDataSourceService
 import androidx.wear.watchface.complications.datasource.ComplicationRequest
+import com.example.wind.data.LocationRepository
 import com.example.wind.data.WeatherRepository
 import com.example.wind.data.WeatherSnapshot
 import com.example.wind.ui.MainActivity
 import java.time.Instant
+import kotlinx.coroutines.runBlocking
 
 abstract class BaseWindComplicationService : ComplicationDataSourceService() {
     protected abstract val label: String
@@ -24,7 +26,11 @@ abstract class BaseWindComplicationService : ComplicationDataSourceService() {
         request: ComplicationRequest,
         listener: ComplicationRequestListener,
     ) {
-        val snapshot = weatherRepository.readCachedWeather()
+        val location = weatherRepository.readLastLocation() ?: LocationRepository.OVERLAND_PARK_KS
+        val snapshot = runBlocking {
+            weatherRepository.getLatestWeather(forceRefresh = true, location = location)
+                ?: weatherRepository.readCachedWeather()
+        }
         val data = buildData(request.complicationType, snapshot)
         listener.onComplicationData(data)
     }

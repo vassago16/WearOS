@@ -29,7 +29,10 @@ class WeatherRepository(context: Context) {
             return cached
         }
 
-        val resolvedLocation = location ?: readLastLocation() ?: return cached
+        val resolvedLocation = location
+            ?: readLastLocation()
+            ?: LocationRepository.OVERLAND_PARK_KS
+
         return try {
             val response = api.getCurrentConditions(resolvedLocation.latitude, resolvedLocation.longitude)
             val weather = response.current?.let { current ->

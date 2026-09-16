@@ -12,9 +12,16 @@ class LocationRepository(private val context: Context) {
         LocationServices.getFusedLocationProviderClient(context)
     }
 
+    companion object {
+        val OVERLAND_PARK_KS = LocationCandidate(
+            latitude = 38.9822,
+            longitude = -94.6708,
+        )
+    }
+
     suspend fun getCurrentLocationOrCached(): LocationCandidate? {
         if (!hasLocationPermission()) {
-            return null
+            return OVERLAND_PARK_KS
         }
 
         return try {
@@ -22,12 +29,12 @@ class LocationRepository(private val context: Context) {
             if (location != null) {
                 LocationCandidate(location.latitude, location.longitude)
             } else {
-                null
+                OVERLAND_PARK_KS
             }
         } catch (_: SecurityException) {
-            null
+            OVERLAND_PARK_KS
         } catch (_: Exception) {
-            null
+            OVERLAND_PARK_KS
         }
     }
 

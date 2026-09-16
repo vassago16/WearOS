@@ -22,16 +22,6 @@ class WindViewModel(
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(isLoading = true, errorMessage = null)
 
-            if (!locationRepository.hasLocationPermission()) {
-                _uiState.value = WindUiState(
-                    statusText = "Location permission required",
-                    lastUpdatedText = "Permission needed",
-                    isLoading = false,
-                    errorMessage = "Grant location permission to refresh weather.",
-                )
-                return@launch
-            }
-
             val currentLocation = locationRepository.getCurrentLocationOrCached()
             val cached = weatherRepository.readCachedWeather()
 
