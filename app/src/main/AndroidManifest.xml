@@ -23,8 +23,10 @@
         </activity>
 
         <service
-            android:name=".complication.WindComplicationService"
+            android:name=".complication.WindSummaryComplicationService"
             android:exported="true"
+            android:icon="@android:drawable/ic_menu_compass"
+            android:label="Wind Summary"
             android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
             <intent-filter>
                 <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
@@ -32,39 +34,34 @@
             <meta-data
                 android:name="android.support.wearable.complications.SUPPORTED_TYPES"
                 android:value="SHORT_TEXT,LONG_TEXT" />
+        </service>
+
+        <service
+            android:name=".complication.WindComplicationService"
+            android:exported="true"
+            android:icon="@android:drawable/ic_menu_compass"
+            android:label="Wind Speed"
+            android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+            <intent-filter>
+                <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+            </intent-filter>
             <meta-data
-                android:name="android.support.wearable.complications.PROVIDER_CONFIG_ACTION"
-                android:value="com.example.wind.WIND_PROVIDER_CONFIG" />
+                android:name="android.support.wearable.complications.SUPPORTED_TYPES"
+                android:value="SHORT_TEXT" />
         </service>
 
         <service
             android:name=".complication.GustComplicationService"
             android:exported="true"
+            android:icon="@android:drawable/ic_menu_compass"
+            android:label="Wind Gust"
             android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
             <intent-filter>
                 <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
             </intent-filter>
             <meta-data
                 android:name="android.support.wearable.complications.SUPPORTED_TYPES"
-                android:value="SHORT_TEXT,LONG_TEXT" />
-            <meta-data
-                android:name="android.support.wearable.complications.PROVIDER_CONFIG_ACTION"
-                android:value="com.example.wind.GUST_PROVIDER_CONFIG" />
-        </service>
-
-        <service
-            android:name=".complication.WindSummaryComplicationService"
-            android:exported="true"
-            android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
-            <intent-filter>
-                <action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
-            </intent-filter>
-            <meta-data
-                android:name="android.support.wearable.complications.SUPPORTED_TYPES"
-                android:value="SHORT_TEXT,LONG_TEXT" />
-            <meta-data
-                android:name="android.support.wearable.complications.PROVIDER_CONFIG_ACTION"
-                android:value="com.example.wind.WIND_SUMMARY_PROVIDER_CONFIG" />
+                android:value="SHORT_TEXT" />
         </service>
     </application>
 </manifest>

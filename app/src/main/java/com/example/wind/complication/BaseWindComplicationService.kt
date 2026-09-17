@@ -18,6 +18,7 @@ import kotlinx.coroutines.runBlocking
 
 abstract class BaseWindComplicationService : ComplicationDataSourceService() {
     protected abstract val label: String
+    protected open val showTitle: Boolean = true
     protected abstract val valueSelector: (WeatherSnapshot) -> String
 
     private val weatherRepository by lazy { WeatherRepository(applicationContext) }
@@ -85,7 +86,7 @@ abstract class BaseWindComplicationService : ComplicationDataSourceService() {
                 text = shortValueText,
                 contentDescription = shortValueText,
             )
-                .setTitle(shortTitleText)
+                .apply { if (showTitle) setTitle(shortTitleText) }
                 .setTapAction(tapAction)
                 .build()
 
@@ -93,7 +94,7 @@ abstract class BaseWindComplicationService : ComplicationDataSourceService() {
                 text = shortValueText,
                 contentDescription = shortValueText,
             )
-                .setTitle(shortTitleText)
+                .apply { if (showTitle) setTitle(shortTitleText) }
                 .setTapAction(tapAction)
                 .build()
 
@@ -101,7 +102,7 @@ abstract class BaseWindComplicationService : ComplicationDataSourceService() {
                 text = fallbackValueText,
                 contentDescription = fallbackValueText,
             )
-                .setTitle(fallbackTitleText)
+                .apply { if (showTitle) setTitle(fallbackTitleText) }
                 .setTapAction(tapAction)
                 .build()
         }
